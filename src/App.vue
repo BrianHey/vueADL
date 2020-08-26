@@ -1,14 +1,12 @@
 <template>
-<div id="app">
-  <!--  <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />-->
-  <Navbar />
-  <input v-model="tarea" />
-  <button @click="agregarTarea">Agregar</button>
-  <ul>
-    <li v-for="(tarea, index) in tareas" :key="index">{{tarea}}</li>
-  </ul>
-</div>
+  <div id="app">
+    <h1>00:00 min/seg</h1>
+    <div class="botones">
+      <button @click="iniciar">3 segs</button>
+      <button @click="iniciar">1 min</button>
+      <button @click="iniciar">2 min</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -27,9 +25,8 @@ export default {
     };
   },
   methods: {
-    agregarTarea() {
-      this.tareas.push(this.tarea);
-      this.tarea = "";
+    iniciar() {
+      alert();
     },
   },
 };
