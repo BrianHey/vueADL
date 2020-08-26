@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>Estoy en el componente NAvbar</h1>
+  <h1>Desafío 1: Listado de Tareas</h1>
 </div>
 </template>
 
