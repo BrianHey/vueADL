@@ -26,9 +26,12 @@ export default {
     }
       
   },
+  // function myFunction() {
+  // setInterval(function(){ alert("Hello"); }, 3000);
   methods: {
     iniciar(time) {
       this.contadorSeg = time
+      setInterval(()=>{this.contadorSeg > 0 ? this.contadorSeg-- : false},1000)
     },
   },
 };
