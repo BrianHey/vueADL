@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <h1>00:00 min/seg</h1>
+    <h1>{{contadorMin < 10 ? '0'+contadorMin : contadorMin }}:{{contadorSeg < 10 ? '0'+contadorSeg : contadorSeg }} min/seg</h1>
     <div class="botones">
-      <button @click="iniciar">3 segs</button>
+      <button @click="iniciar(3)">3 segs</button>
       <button @click="iniciar">1 min</button>
       <button @click="iniciar">2 min</button>
     </div>
@@ -20,13 +20,15 @@ export default {
   },
   data() {
     return {
-      tareas: [],
-      tarea: "",
-    };
+      contadorMin: 0,
+      contadorSeg: 0
+
+    }
+      
   },
   methods: {
-    iniciar() {
-      alert();
+    iniciar(time) {
+      this.contadorSeg = time
     },
   },
 };
