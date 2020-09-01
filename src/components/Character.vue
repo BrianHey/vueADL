@@ -1,7 +1,7 @@
 <template>
 <div>
   <img :src="src" alt />
-  <h3 @click="avisaleApapa">{{name}}</h3>
+  <h3 @click="avisaleApapa">{{name}} {{indice}}</h3>
 </div>
 </template>
 
@@ -11,10 +11,11 @@ export default {
   props: {
     src: String,
     name: String,
+    indice: String,
   },
   methods: {
     avisaleApapa() {
-      this.$emit("toctoc", 2);
+      this.$emit("toctoc", this.indice);
     },
   },
 };

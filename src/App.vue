@@ -1,8 +1,11 @@
 <template>
 <div>
-  <button @click="saludar">clickeame po! Soy parte del Padre</button>
+
+  
+ <input v-model="indice" type="text">
+
   <div v-for="(p, i) in personajes" :key="i">
-    <Character @toctoc="saludar" :src="p.picture" :name="p.nombre" />
+    <Character @toctoc="saludar" :src="p.picture" :name="p.nombre" :indice="indice" />
   </div>
 </div>
 </template>
@@ -16,6 +19,7 @@ export default {
   data() {
     return {
       personajes: [],
+      indice: "",
     };
   },
   methods: {
