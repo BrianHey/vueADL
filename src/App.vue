@@ -1,6 +1,6 @@
 <template>
 <div>
-  <Character :src="src" :mssg="mssg"/>
+  <Character v-for="(personaje, i) in personajes" :key="i" :src="personaje.picture" :mssg="personaje.nombre"/>
 </div>
 
 </template>
@@ -13,8 +13,6 @@ export default {
   },
   data() {
     return {
-      src: "https://static.vix.com/es/sites/default/files/styles/1x1/public/imj/p/paisajes-espectaculares-del-mundo-1.jpg",
-      mssg: "El hermoso sur de Chile",
       personajes: [],
     }
   },
