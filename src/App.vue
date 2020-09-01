@@ -1,8 +1,10 @@
 <template>
 <div>
-  <Character v-for="(personaje, i) in personajes" :key="i" :src="personaje.picture" :mssg="personaje.nombre"/>
+  <button @click="saludar">clickeame po! Soy parte del Padre</button>
+  <div v-for="(p, i) in personajes" :key="i">
+    <Character @toctoc="saludar" :src="p.picture" :name="p.nombre" />
+  </div>
 </div>
-
 </template>
 
 <script>
@@ -14,25 +16,33 @@ export default {
   data() {
     return {
       personajes: [],
-    }
+    };
   },
-  mounted(){
+  methods: {
+    saludar(indice) {
+      this.personajes.splice(indice, 1);
+    },
+  },
+  mounted() {
     fetch("https://rickandmortyapi.com/api/character")
-    .then((response)=> response.json())
-    .then((json)=>{
-      let data = json.results;
+      .then((response) => response.json())
+      .then((json) => {
+        let data = json.results;
 
-      data.slice(0,5).forEach(el => {
-        let nombre = el.name;
-        let picture = el.image;
+        data.slice(0, 5).forEach((el) => {
+          let nombre = el.name;
+          let picture = el.image;
 
-      
-      this.personajes.push({nombre, picture});
-        
+          this.personajes.push({
+            nombre,
+            picture,
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(`todo esta perdido rick ${err}`);
       });
-    })
-    .catch((err)=>{console.log(`todo esta perdido rick ${err}`)})
-  }
+  },
 };
 </script>
 
