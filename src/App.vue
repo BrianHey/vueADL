@@ -1,51 +1,39 @@
 <template>
-<div>
-
-  
- <input v-model="indice" type="text">
-
-  <div v-for="(p, i) in personajes" :key="i">
-    <Character @toctoc="saludar" :src="p.picture" :name="p.nombre" :indice="indice" />
+  <div>
+    <input v-model="tarea" type="text" autofocus />
+    <button @click="add">Agregar tarea</button>
+    <Tarea
+      v-for="(tarea, i) in tareas "
+      :tarea="tarea"
+      :indice="i"
+      :key="i"
+      @eliminar="eliminarTarea"
+    ></Tarea>
   </div>
-</div>
 </template>
 
 <script>
-import Character from "./components/Character";
+import Tarea from "./components/Tarea";
+
 export default {
-  components: {
-    Character,
-  },
+  name: "toDoList",
   data() {
     return {
-      personajes: [],
-      indice: "",
+      tarea: "",
+      tareas: [],
     };
   },
-  methods: {
-    saludar(indice) {
-      this.personajes.splice(indice, 1);
-    },
+  components: {
+    Tarea,
   },
-  mounted() {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
-      .then((json) => {
-        let data = json.results;
-
-        data.slice(0, 5).forEach((el) => {
-          let nombre = el.name;
-          let picture = el.image;
-
-          this.personajes.push({
-            nombre,
-            picture,
-          });
-        });
-      })
-      .catch((err) => {
-        console.log(`todo esta perdido rick ${err}`);
-      });
+  methods: {
+    add() {
+      this.tareas.push(this.tarea);
+      this.tarea = "";
+    },
+    eliminarTarea(indice) {
+      this.tareas.splice(indice, 1);
+    },
   },
 };
 </script>
