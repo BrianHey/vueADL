@@ -14,9 +14,27 @@ export default {
   data() {
     return {
       src: "https://static.vix.com/es/sites/default/files/styles/1x1/public/imj/p/paisajes-espectaculares-del-mundo-1.jpg",
-      mssg: "El hermoso sur de Chile"
+      mssg: "El hermoso sur de Chile",
+      personajes: [],
     }
   },
+  mounted(){
+    fetch("https://rickandmortyapi.com/api/character")
+    .then((response)=> response.json())
+    .then((json)=>{
+      let data = json.results;
+
+      data.slice(0,5).forEach(el => {
+        let nombre = el.name;
+        let picture = el.image;
+
+      
+      this.personajes.push({nombre, picture});
+        
+      });
+    })
+    .catch((err)=>{console.log(`todo esta perdido rick ${err}`)})
+  }
 };
 </script>
 
