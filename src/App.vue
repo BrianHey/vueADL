@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input v-model="tarea" type="text" autofocus />
+    <input v-model="tarea" type="text" autofocus @keyup.enter="add"/>
     <button @click="add">Agregar tarea</button>
     <Tarea
       v-for="(tarea, i) in tareas "
