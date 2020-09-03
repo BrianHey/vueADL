@@ -15,7 +15,7 @@ export default {
   name: "app",
   data() {
     return {
-      nombre: " ",
+      nombre: "pikachu",
       pokemon: {
         name: "",
         sprites: { front_default: "" },
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     buscarPokemon() {
-      fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+      fetch(`https://pokeapi.co/api/v2/pokemon/${this.nombre}`)
         .then(function (response) {
           return response.json();
         })
